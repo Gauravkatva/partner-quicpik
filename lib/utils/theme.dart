@@ -8,42 +8,45 @@ class AppTheme {
       );
 
   static TextTheme appTextTheme() => TextTheme(
-        bodyText1: style(
-          fontSize: 16,
-          fontWeight: FontWeight.normal,
-        ),
-        bodyText2: style(
-          fontSize: 14,
-          fontWeight: FontWeight.normal,
-        ),
-        headline3: style(
-          fontSize: 48,
-          fontWeight: FontWeight.normal,
-        ),
-        headline4: style(
-          fontSize: 34,
-          fontWeight: FontWeight.normal,
-        ),
-        headline5: style(
-          fontSize: 24,
-          fontWeight: FontWeight.normal,
-        ),
-        headline6: style(
-          fontSize: 20,
-          fontWeight: FontWeight.w400,
-        ),
-        subtitle1: style(
-          fontSize: 16,
-          fontWeight: FontWeight.w400,
-        ),
-        subtitle2: style(
-          fontSize: 14,
-          fontWeight: FontWeight.w400,
-        ),
-        caption: style(
-          fontSize: 12,
-        ),
-      );
+      bodyText1: style(
+        fontSize: 16,
+        fontWeight: FontWeight.normal,
+      ),
+      bodyText2: style(
+        fontSize: 14,
+        fontWeight: FontWeight.normal,
+      ),
+      headline3: style(
+        fontSize: 48,
+        fontWeight: FontWeight.normal,
+      ),
+      headline4: style(
+        fontSize: 34,
+        fontWeight: FontWeight.normal,
+      ),
+      headline5: style(
+        fontSize: 24,
+        fontWeight: FontWeight.normal,
+      ),
+      headline6: style(
+        fontSize: 20,
+        fontWeight: FontWeight.w400,
+      ),
+      subtitle1: style(
+        fontSize: 16,
+        fontWeight: FontWeight.w400,
+      ),
+      subtitle2: style(
+        fontSize: 14,
+        fontWeight: FontWeight.w400,
+      ),
+      caption: style(
+        fontSize: 12,
+      ),
+      button: style(
+        fontSize: 19,
+        fontWeight: FontWeight.bold,
+      ));
 
   static TextStyle style({
     required double fontSize,

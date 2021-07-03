@@ -15,13 +15,14 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       routes: {
         Routes.signupRoute: (context) => SignUp(),
         Routes.wrapperRoute: (context) => Wrapper(),
         Routes.onboardingRoute: (context) => Onboarding(),
       },
       theme: AppTheme.lightTheme(context),
-      home: Wrapper(),
+      //home: Wrapper(),
     );
   }
 }
