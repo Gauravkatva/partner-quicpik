@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:partner_quicpik/components/button.dart';
+import 'package:partner_quicpik/utils/app_utils.dart';
 import 'package:partner_quicpik/utils/routes.dart';
 
 class Onboarding extends StatelessWidget {
@@ -9,7 +10,7 @@ class Onboarding extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).primaryColor,
+      backgroundColor: themeData(context).primaryColor,
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -37,7 +38,7 @@ class Onboarding extends StatelessWidget {
               ),
               child: Text(
                 "Please sign in or sign up to continue",
-                style: Theme.of(context).textTheme.bodyText1!.copyWith(
+                style: themeData(context).textTheme.bodyText1!.copyWith(
                       fontWeight: FontWeight.bold,
                       color: Colors.white,
                     ),
@@ -47,7 +48,7 @@ class Onboarding extends StatelessWidget {
               buttonTitle: "Sign In",
               onPressed: () {},
               buttonColor: Colors.white,
-              titleColor: Theme.of(context).primaryColor,
+              titleColor: themeData(context).primaryColor,
             ),
             AppButton(
               buttonTitle: "Sign Up",
@@ -55,7 +56,7 @@ class Onboarding extends StatelessWidget {
                 Navigator.pushNamed(context, Routes.signupRoute);
               },
               buttonColor: Colors.white,
-              titleColor: Theme.of(context).primaryColor,
+              titleColor: themeData(context).primaryColor,
             ),
           ],
         ),

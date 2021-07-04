@@ -11,3 +11,7 @@ void printDebug(value) {
 Size screenSize(BuildContext context) {
   return MediaQuery.of(context).size;
 }
+
+ThemeData themeData(BuildContext context) {
+  return Theme.of(context);
+}

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:partner_quicpik/components/app_clippers.dart';
 import 'package:partner_quicpik/components/button.dart';
+import 'package:partner_quicpik/components/text_field.dart';
 import 'package:partner_quicpik/utils/app_utils.dart';
 
 class SignUp extends StatelessWidget {
@@ -27,7 +28,7 @@ class SignUp extends StatelessWidget {
                   child: Container(
                     height: screenSize(context).height / 2.5,
                     width: screenSize(context).width,
-                    color: Theme.of(context).primaryColor,
+                    color: themeData(context).primaryColor,
                     child: Container(
                       margin: EdgeInsets.only(left: 20),
                       child: Column(
@@ -48,10 +49,12 @@ class SignUp extends StatelessWidget {
                           ),
                           Text(
                             "Please Sign up to continue",
-                            style:
-                                Theme.of(context).textTheme.bodyText1!.copyWith(
-                                      color: Colors.white,
-                                    ),
+                            style: themeData(context)
+                                .textTheme
+                                .bodyText1!
+                                .copyWith(
+                                  color: Colors.white,
+                                ),
                           ),
                         ],
                       ),
@@ -67,62 +70,66 @@ class SignUp extends StatelessWidget {
             ),
             Container(
               margin: EdgeInsets.only(
-                top: 20,
+                top: 25,
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Text(
                     "Sign Up with OTP",
-                    style: Theme.of(context).textTheme.headline6!.copyWith(
-                          color: Theme.of(context).primaryColor,
+                    style: themeData(context).textTheme.headline6!.copyWith(
+                          color: themeData(context).primaryColor,
                           fontWeight: FontWeight.bold,
                         ),
                   ),
-                  Container(
-                    margin: EdgeInsets.symmetric(
-                      vertical: 10,
-                      horizontal: 45,
-                    ),
-                    height: 50,
-                    width: double.infinity,
-                    child: TextFormField(
-                      keyboardType: TextInputType.phone,
-                      decoration: InputDecoration(
-                          hintText: "Phone number",
-                          border: InputBorder.none,
-                          prefixIcon: Icon(
-                            Icons.phone,
-                          ),
-                          suffixIcon: InkWell(
-                            child: Icon(
-                              Icons.clear,
-                            ),
-                          )),
-                    ),
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(10),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.grey,
-                          offset: Offset(0.0, 1.0), //(x,y)
-                          blurRadius: 6.0,
-                        ),
-                      ],
+                  AddTextField(
+                    hintText: "Phone Number",
+                    prefixIcon: Icon(Icons.phone),
+                    suffixIcon: Icon(
+                      Icons.clear,
                     ),
                   ),
+                  // Container(
+                  //   margin: EdgeInsets.symmetric(
+                  //     vertical: 10,
+                  //     horizontal: 45,
+                  //   ),
+                  //   height: 50,
+                  //   width: double.infinity,
+                  //   child: TextFormField(
+                  //     keyboardType: TextInputType.number,
+                  //     decoration: InputDecoration(
+                  //       hintText: "xyz",
+                  //       border: InputBorder.none,
+                  //       prefixIcon: Icon(Icons.phone),
+                  //       suffixIcon: InkWell(
+                  //         child: Icon(Icons.clear),
+                  //       ),
+                  //     ),
+                  //   ),
+                  //   decoration: BoxDecoration(
+                  //     color: Colors.white,
+                  //     borderRadius: BorderRadius.circular(10),
+                  //     boxShadow: [
+                  //       BoxShadow(
+                  //         color: Colors.grey,
+                  //         offset: Offset(0.0, 1.0), //(x,y)
+                  //         blurRadius: 6.0,
+                  //       ),
+                  //     ],
+                  //   ),
+                  // ),
                   AppButton(
                       buttonTitle: "Sign Up",
                       onPressed: () {},
-                      buttonColor: Theme.of(context).primaryColor,
+                      buttonColor: themeData(context).primaryColor,
                       titleColor: Colors.white),
                   TextButton(
                     onPressed: () {},
                     child: Text(
                       "Already have an account? Sign In",
-                      style: Theme.of(context).textTheme.bodyText1!.copyWith(
-                            color: Theme.of(context).primaryColor,
+                      style: themeData(context).textTheme.bodyText1!.copyWith(
+                            color: themeData(context).primaryColor,
                           ),
                     ),
                   )

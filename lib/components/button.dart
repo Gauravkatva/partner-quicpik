@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:partner_quicpik/utils/app_utils.dart';
 
 class AppButton extends StatelessWidget {
   final String buttonTitle;
@@ -34,7 +35,7 @@ class AppButton extends StatelessWidget {
           child: Center(
             child: Text(
               buttonTitle,
-              style: Theme.of(context).textTheme.button!.copyWith(
+              style: themeData(context).textTheme.button!.copyWith(
                     color: titleColor,
                   ),
             ),
