@@ -15,3 +15,7 @@ Size screenSize(BuildContext context) {
 ThemeData themeData(BuildContext context) {
   return Theme.of(context);
 }
+
+void openScreen(BuildContext context, String route) {
+  Navigator.pushNamed(context, route);
+}

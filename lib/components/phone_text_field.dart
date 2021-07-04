@@ -1,22 +1,26 @@
 import 'package:flutter/material.dart';
 
-class AddTextField extends StatelessWidget {
+class PhoneNumberTextField extends StatelessWidget {
   final String hintText;
   final Icon prefixIcon;
   final Icon? suffixIcon;
   final int? maxLines;
   final FocusNode? focusNode;
   final TextInputType? textInputType;
+  final TextEditingController textEditingController;
+  final bool? shouldShowShadow;
 
-  const AddTextField(
-      {Key? key,
-      required this.hintText,
-      required this.prefixIcon,
-      this.suffixIcon,
-      this.maxLines,
-      this.focusNode,
-      this.textInputType})
-      : super(key: key);
+  const PhoneNumberTextField({
+    Key? key,
+    required this.textEditingController,
+    required this.hintText,
+    required this.prefixIcon,
+    this.suffixIcon,
+    this.maxLines,
+    this.focusNode,
+    this.textInputType,
+    this.shouldShowShadow = false,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -28,6 +32,7 @@ class AddTextField extends StatelessWidget {
       height: 50,
       width: double.infinity,
       child: TextFormField(
+        controller: textEditingController,
         keyboardType: textInputType,
         decoration: InputDecoration(
           hintText: hintText,
@@ -38,19 +43,24 @@ class AddTextField extends StatelessWidget {
           prefixIcon: prefixIcon,
           suffixIcon: InkWell(
             child: suffixIcon,
+            onTap: () {
+              textEditingController.clear();
+            },
           ),
         ),
       ),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(10),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.grey,
-            offset: Offset(0.0, 1.0), //(x,y)
-            blurRadius: 6.0,
-          ),
-        ],
+        boxShadow: shouldShowShadow!
+            ? [
+                BoxShadow(
+                  color: Colors.grey,
+                  offset: Offset(0.0, 1.0), //(x,y)
+                  blurRadius: 6.0,
+                ),
+              ]
+            : null,
       ),
     );
   }

@@ -46,14 +46,16 @@ class Onboarding extends StatelessWidget {
             ),
             AppButton(
               buttonTitle: "Sign In",
-              onPressed: () {},
+              onPressed: () {
+                openScreen(context, Routes.signinRoute);
+              },
               buttonColor: Colors.white,
               titleColor: themeData(context).primaryColor,
             ),
             AppButton(
               buttonTitle: "Sign Up",
               onPressed: () {
-                Navigator.pushNamed(context, Routes.signupRoute);
+                openScreen(context, Routes.signupRoute);
               },
               buttonColor: Colors.white,
               titleColor: themeData(context).primaryColor,
