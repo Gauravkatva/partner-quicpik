@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:partner_quicpik/components/button.dart';
+import 'package:partner_quicpik/utils/routes.dart';
 
 class Onboarding extends StatelessWidget {
   const Onboarding({Key? key}) : super(key: key);
@@ -50,7 +51,9 @@ class Onboarding extends StatelessWidget {
             ),
             AppButton(
               buttonTitle: "Sign Up",
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pushNamed(context, Routes.signupRoute);
+              },
               buttonColor: Colors.white,
               titleColor: Theme.of(context).primaryColor,
             ),

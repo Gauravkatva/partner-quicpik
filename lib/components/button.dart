@@ -16,24 +16,28 @@ class AppButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 60,
-      width: double.infinity,
       margin: EdgeInsets.symmetric(
         vertical: 10,
         horizontal: 45,
       ),
-      decoration: BoxDecoration(
-        color: buttonColor,
-        borderRadius: BorderRadius.circular(10),
-      ),
-      child: InkWell(
-        onTap: onPressed,
-        child: Center(
-          child: Text(
-            buttonTitle,
-            style: Theme.of(context).textTheme.button!.copyWith(
-                  color: titleColor,
-                ),
+      child: Ink(
+        height: 60,
+        width: double.infinity,
+        decoration: BoxDecoration(
+          color: buttonColor,
+          borderRadius: BorderRadius.circular(10),
+        ),
+        child: InkWell(
+          borderRadius: BorderRadius.circular(10),
+          splashColor: Colors.grey,
+          onTap: onPressed,
+          child: Center(
+            child: Text(
+              buttonTitle,
+              style: Theme.of(context).textTheme.button!.copyWith(
+                    color: titleColor,
+                  ),
+            ),
           ),
         ),
       ),

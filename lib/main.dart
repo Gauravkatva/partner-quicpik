@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
         Routes.onboardingRoute: (context) => Onboarding(),
       },
       theme: AppTheme.lightTheme(context),
-      //home: Wrapper(),
+      //home: SignUp(),
     );
   }
 }
