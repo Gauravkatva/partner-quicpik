@@ -19,3 +19,16 @@ ThemeData themeData(BuildContext context) {
 void openScreen(BuildContext context, String route) {
   Navigator.pushNamed(context, route);
 }
+
+void showSnackBar(BuildContext context, String content) {
+  ScaffoldMessenger.of(context).showSnackBar(
+    SnackBar(
+      content: Text(
+        content,
+        style: themeData(context).textTheme.button!.copyWith(
+              color: Colors.white,
+            ),
+      ),
+    ),
+  );
+}

@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:partner_quicpik/components/app_clippers.dart';
 import 'package:partner_quicpik/components/button.dart';
+import 'package:partner_quicpik/components/otp_field.dart';
 import 'package:partner_quicpik/utils/app_utils.dart';
 import 'package:partner_quicpik/utils/routes.dart';
 
 class Verification extends StatelessWidget {
   Verification({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,7 +41,8 @@ class Verification extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Container(
-                            width: 170,
+                            margin: EdgeInsets.only(top: 30),
+                            width: 210,
                             child: Text(
                               "Verification",
                               style: Theme.of(context)
@@ -65,7 +68,7 @@ class Verification extends StatelessWidget {
                   ),
                 ),
                 Positioned(
-                  top: screenSize(context).height / 9,
+                  top: screenSize(context).height / 6,
                   left: screenSize(context).width - 230,
                   child: Image.asset("assets/verify.png"),
                 ),
@@ -85,9 +88,13 @@ class Verification extends StatelessWidget {
                           fontWeight: FontWeight.bold,
                         ),
                   ),
+                  OTPVerification(),
                   AppButton(
-                      buttonTitle: "Sign In",
-                      onPressed: () {},
+                      buttonTitle: "Verify",
+                      onPressed: () {
+                        showSnackBar(context, "OTP Verified");
+                        openScreen(context, Routes.carouselRoute);
+                      },
                       buttonColor: Colors.white,
                       titleColor: themeData(context).primaryColor),
                   TextButton(

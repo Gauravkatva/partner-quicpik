@@ -4,4 +4,5 @@ class Routes {
   static String signinRoute = "/signin";
   static String verificationRoute = "/verification";
   static String wrapperRoute = "/";
+  static String carouselRoute = "/carousel";
 }

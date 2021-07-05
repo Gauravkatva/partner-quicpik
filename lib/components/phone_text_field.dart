@@ -36,9 +36,6 @@ class PhoneNumberTextField extends StatelessWidget {
         keyboardType: textInputType,
         decoration: InputDecoration(
           hintText: hintText,
-          hintStyle: TextStyle(
-            color: Colors.blue,
-          ),
           border: InputBorder.none,
           prefixIcon: prefixIcon,
           suffixIcon: InkWell(

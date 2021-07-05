@@ -39,7 +39,7 @@ class SignIn extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Container(
-                            width: 150,
+                            width: 175,
                             child: Text(
                               "Welcome Back",
                               style: Theme.of(context)
