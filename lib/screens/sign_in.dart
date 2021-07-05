@@ -5,23 +5,25 @@ import 'package:partner_quicpik/components/phone_text_field.dart';
 import 'package:partner_quicpik/utils/app_utils.dart';
 import 'package:partner_quicpik/utils/routes.dart';
 
-class SignUp extends StatelessWidget {
-  SignUp({Key? key}) : super(key: key);
+class SignIn extends StatelessWidget {
+  SignIn({Key? key}) : super(key: key);
   final phoneNumberController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
+        backgroundColor: Colors.white,
+        iconTheme: IconThemeData(color: themeData(context).primaryColor),
       ),
-      backgroundColor: Colors.white,
+      backgroundColor: themeData(context).primaryColor,
       body: SingleChildScrollView(
         child: Column(
           children: [
             Stack(
               children: [
                 Container(
-                  height: screenSize(context).height / 1.9,
+                  height: screenSize(context).height / 2,
                   width: screenSize(context).width,
                 ),
                 ClipPath(
@@ -29,7 +31,7 @@ class SignUp extends StatelessWidget {
                   child: Container(
                     height: screenSize(context).height / 2.5,
                     width: screenSize(context).width,
-                    color: themeData(context).primaryColor,
+                    color: Colors.white,
                     child: Container(
                       margin: EdgeInsets.only(left: 20),
                       child: Column(
@@ -37,24 +39,24 @@ class SignUp extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Container(
-                            width: 150,
+                            width: 175,
                             child: Text(
-                              "Create Account",
+                              "Welcome Back",
                               style: Theme.of(context)
                                   .textTheme
                                   .headline4!
                                   .copyWith(
-                                    color: Colors.white,
+                                    color: themeData(context).primaryColor,
                                   ),
                             ),
                           ),
                           Text(
-                            "Please Sign up to continue",
+                            "Please Sign in to continue",
                             style: themeData(context)
                                 .textTheme
                                 .bodyText1!
                                 .copyWith(
-                                  color: Colors.white,
+                                  color: themeData(context).primaryColor,
                                 ),
                           ),
                         ],
@@ -63,9 +65,9 @@ class SignUp extends StatelessWidget {
                   ),
                 ),
                 Positioned(
-                  top: screenSize(context).height / 5.5,
-                  left: 0,
-                  child: Image.asset("assets/sign_up.png"),
+                  top: screenSize(context).height / 9,
+                  left: screenSize(context).width - 230,
+                  child: Image.asset("assets/sign_in.png"),
                 ),
               ],
             ),
@@ -77,9 +79,9 @@ class SignUp extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Text(
-                    "Sign Up with OTP",
+                    "Sign In with OTP",
                     style: themeData(context).textTheme.headline6!.copyWith(
-                          color: themeData(context).primaryColor,
+                          color: Colors.white,
                           fontWeight: FontWeight.bold,
                         ),
                   ),
@@ -89,23 +91,22 @@ class SignUp extends StatelessWidget {
                     prefixIcon: Icon(Icons.phone),
                     suffixIcon: Icon(Icons.cancel),
                     textInputType: TextInputType.phone,
-                    shouldShowShadow: true,
                   ),
                   AppButton(
-                      buttonTitle: "Sign Up",
+                      buttonTitle: "Sign In",
                       onPressed: () {
                         openScreen(context, Routes.verificationRoute);
                       },
-                      buttonColor: themeData(context).primaryColor,
-                      titleColor: Colors.white),
+                      buttonColor: Colors.white,
+                      titleColor: themeData(context).primaryColor),
                   TextButton(
                     onPressed: () {
-                      openScreen(context, Routes.signinRoute);
+                      openScreen(context, Routes.signupRoute);
                     },
                     child: Text(
-                      "Already have an account? Sign In",
+                      "Don't have an accoun? Sign Up",
                       style: themeData(context).textTheme.bodyText1!.copyWith(
-                            color: themeData(context).primaryColor,
+                            color: Colors.white,
                           ),
                     ),
                   )
