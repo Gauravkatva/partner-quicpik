@@ -94,7 +94,7 @@ class SignUp extends StatelessWidget {
                   AppButton(
                       buttonTitle: "Sign Up",
                       onPressed: () {
-                        openScreen(context, Routes.verificationRoute);
+                        openScreen(context, Routes.shopDetailRoute); //TODO: verification Screen
                       },
                       buttonColor: themeData(context).primaryColor,
                       titleColor: Colors.white),

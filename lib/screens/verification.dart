@@ -93,7 +93,8 @@ class Verification extends StatelessWidget {
                       buttonTitle: "Verify",
                       onPressed: () {
                         showSnackBar(context, "OTP Verified");
-                        openScreen(context, Routes.carouselRoute);
+                        openScreen(context, Routes.carouselRoute,
+                            shouldReplace: true);
                       },
                       buttonColor: Colors.white,
                       titleColor: themeData(context).primaryColor),

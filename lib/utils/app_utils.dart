@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:partner_quicpik/screens/carosel_screens.dart';
 
 bool isDebugging = true;
 
@@ -16,8 +17,13 @@ ThemeData themeData(BuildContext context) {
   return Theme.of(context);
 }
 
-void openScreen(BuildContext context, String route) {
-  Navigator.pushNamed(context, route);
+void openScreen(BuildContext context, String route,
+    {bool shouldReplace = false}) {
+  if (shouldReplace == true) {
+    Navigator.pushNamedAndRemoveUntil(context, route, (route) => false);
+  } else {
+    Navigator.pushNamed(context, route);
+  }
 }
 
 void showSnackBar(BuildContext context, String content) {

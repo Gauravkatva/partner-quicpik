@@ -5,4 +5,6 @@ class Routes {
   static String verificationRoute = "/verification";
   static String wrapperRoute = "/";
   static String carouselRoute = "/carousel";
+  static String shopDetailRoute = "/shopDetail";
+  static String personalDetailRoute = "/personalDetail";
 }
