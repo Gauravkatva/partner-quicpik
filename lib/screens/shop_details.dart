@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:partner_quicpik/components/app_clippers.dart';
+import 'package:partner_quicpik/components/button.dart';
+import 'package:partner_quicpik/components/generic_textfield.dart';
 import 'package:partner_quicpik/utils/app_utils.dart';
 
 class ShopDetails extends StatefulWidget {
@@ -10,6 +12,7 @@ class ShopDetails extends StatefulWidget {
 }
 
 class _ShopDetailsState extends State<ShopDetails> {
+  final shopNameController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -64,7 +67,47 @@ class _ShopDetailsState extends State<ShopDetails> {
             ),
             Column(
               children: [
-                
+                GenericTextField(
+                  textEditingController: shopNameController,
+                  hintText: "ShopName",
+                  prefixIcon: Icon(Icons.ac_unit),
+                ),
+                GenericTextField(
+                  textEditingController: shopNameController,
+                  hintText: "ShopName",
+                  prefixIcon: Icon(Icons.ac_unit),
+                ),
+                GenericTextField(
+                  textEditingController: shopNameController,
+                  hintText: "ShopName",
+                  prefixIcon: Icon(Icons.ac_unit),
+                ),
+                GenericTextField(
+                  textEditingController: shopNameController,
+                  hintText: "ShopName",
+                  prefixIcon: Icon(Icons.ac_unit),
+                ),
+                GenericTextField(
+                  textEditingController: shopNameController,
+                  hintText: "ShopName",
+                  prefixIcon: Icon(Icons.ac_unit),
+                ),
+                GenericTextField(
+                  textEditingController: shopNameController,
+                  hintText: "ShopName",
+                  prefixIcon: Icon(Icons.ac_unit),
+                ),
+                GenericTextField(
+                  textEditingController: shopNameController,
+                  hintText: "ShopName",
+                  prefixIcon: Icon(Icons.ac_unit),
+                ),
+                AppButton(
+                  buttonTitle: "Finish",
+                  onPressed: () {},
+                  buttonColor: themeData(context).primaryColor,
+                  titleColor: Colors.white,
+                )
               ],
             ),
           ],

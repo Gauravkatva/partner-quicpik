@@ -1,25 +1,23 @@
 import 'package:flutter/material.dart';
 
-class PhoneNumberTextField extends StatelessWidget {
+class GenericTextField extends StatelessWidget {
   final String hintText;
   final Icon prefixIcon;
-  final Icon? suffixIcon;
   final int? maxLines;
   final FocusNode? focusNode;
   final TextInputType? textInputType;
   final TextEditingController textEditingController;
   final bool? shouldShowShadow;
 
-  const PhoneNumberTextField({
+  const GenericTextField({
     Key? key,
     required this.textEditingController,
     required this.hintText,
     required this.prefixIcon,
-    this.suffixIcon,
     this.maxLines,
     this.focusNode,
     this.textInputType,
-    this.shouldShowShadow = false,
+    this.shouldShowShadow = true,
   }) : super(key: key);
 
   @override
@@ -38,12 +36,6 @@ class PhoneNumberTextField extends StatelessWidget {
           hintText: hintText,
           border: InputBorder.none,
           prefixIcon: prefixIcon,
-          suffixIcon: InkWell(
-            child: suffixIcon,
-            onTap: () {
-              textEditingController.clear();
-            },
-          ),
         ),
       ),
       decoration: BoxDecoration(
