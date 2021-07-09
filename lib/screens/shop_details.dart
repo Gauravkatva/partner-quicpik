@@ -13,6 +13,12 @@ class ShopDetails extends StatefulWidget {
 
 class _ShopDetailsState extends State<ShopDetails> {
   final shopNameController = TextEditingController();
+  final categoryController = TextEditingController();
+  final shopNumberController = TextEditingController();
+  final landMarkController = TextEditingController();
+  final areaController = TextEditingController();
+  final cityController = TextEditingController();
+  final pincodeController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -69,38 +75,38 @@ class _ShopDetailsState extends State<ShopDetails> {
               children: [
                 GenericTextField(
                   textEditingController: shopNameController,
-                  hintText: "ShopName",
-                  prefixIcon: Icon(Icons.ac_unit),
+                  hintText: "Shop Name",
+                  prefixIcon: Icon(Icons.shop),
                 ),
                 GenericTextField(
-                  textEditingController: shopNameController,
-                  hintText: "ShopName",
-                  prefixIcon: Icon(Icons.ac_unit),
+                  textEditingController: categoryController,
+                  hintText: "Category",
+                  prefixIcon: Icon(Icons.category),
                 ),
                 GenericTextField(
-                  textEditingController: shopNameController,
-                  hintText: "ShopName",
-                  prefixIcon: Icon(Icons.ac_unit),
+                  textEditingController: shopNumberController,
+                  hintText: "Complex / Shop Number",
+                  prefixIcon: Icon(Icons.house),
                 ),
                 GenericTextField(
-                  textEditingController: shopNameController,
-                  hintText: "ShopName",
-                  prefixIcon: Icon(Icons.ac_unit),
+                  textEditingController: landMarkController,
+                  hintText: "Landmark",
+                  prefixIcon: Icon(Icons.account_balance),
                 ),
                 GenericTextField(
-                  textEditingController: shopNameController,
-                  hintText: "ShopName",
-                  prefixIcon: Icon(Icons.ac_unit),
+                  textEditingController: areaController,
+                  hintText: "Area",
+                  prefixIcon: Icon(Icons.location_on),
                 ),
                 GenericTextField(
-                  textEditingController: shopNameController,
-                  hintText: "ShopName",
-                  prefixIcon: Icon(Icons.ac_unit),
+                  textEditingController: cityController,
+                  hintText: "City",
+                  prefixIcon: Icon(Icons.location_city),
                 ),
                 GenericTextField(
-                  textEditingController: shopNameController,
-                  hintText: "ShopName",
-                  prefixIcon: Icon(Icons.ac_unit),
+                  textEditingController: pincodeController,
+                  hintText: "Pincode",
+                  prefixIcon: Icon(Icons.pin),
                 ),
                 AppButton(
                   buttonTitle: "Finish",
