@@ -6,8 +6,9 @@ import 'package:partner_quicpik/utils/app_utils.dart';
 import 'package:partner_quicpik/utils/routes.dart';
 
 class Verification extends StatelessWidget {
-  Verification({Key? key}) : super(key: key);
-
+  Verification({this.fromSignup = false, Key? key}) : super(key: key);
+  final bool fromSignup;
+  final FocusNode focusNode = FocusNode();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -88,13 +89,18 @@ class Verification extends StatelessWidget {
                           fontWeight: FontWeight.bold,
                         ),
                   ),
-                  OTPVerification(),
+                  OTPVerification(
+                    focusNode: focusNode,
+                  ),
                   AppButton(
                       buttonTitle: "Verify",
-                      onPressed: () {
+                      onPressed: () async {
                         showSnackBar(context, "OTP Verified");
-                        openScreen(context, Routes.carouselRoute,
-                            shouldReplace: true);
+                        if (fromSignup) {
+                          openScreen(context, Routes.personalDetailRoute);
+                        } else {
+                          openScreen(context, Routes.carouselRoute);
+                        }
                       },
                       buttonColor: Colors.white,
                       titleColor: themeData(context).primaryColor),

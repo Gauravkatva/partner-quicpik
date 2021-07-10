@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:partner_quicpik/screens/carosel_screens.dart';
 
 bool isDebugging = true;
 
