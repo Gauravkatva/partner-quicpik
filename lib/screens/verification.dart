@@ -106,7 +106,7 @@ class Verification extends StatelessWidget {
                       titleColor: themeData(context).primaryColor),
                   TextButton(
                     onPressed: () {
-                      openScreen(context, Routes.signupRoute);
+                      showSnackBar(context, "OTP Resent");
                     },
                     child: Text(
                       "Resend OTP",
