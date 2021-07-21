@@ -85,7 +85,6 @@ class PersonalDetails extends StatelessWidget {
                 top: 25,
               ),
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   GenericTextField(
                     textEditingController: fullNameController,

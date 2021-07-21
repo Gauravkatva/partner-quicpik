@@ -3,6 +3,7 @@ import 'package:partner_quicpik/components/app_clippers.dart';
 import 'package:partner_quicpik/components/button.dart';
 import 'package:partner_quicpik/components/generic_textfield.dart';
 import 'package:partner_quicpik/utils/app_utils.dart';
+import 'package:partner_quicpik/utils/routes.dart';
 
 class ShopDetails extends StatefulWidget {
   const ShopDetails({Key? key}) : super(key: key);
@@ -104,7 +105,9 @@ class _ShopDetailsState extends State<ShopDetails> {
                 ),
                 AppButton(
                   buttonTitle: "Finish",
-                  onPressed: () {},
+                  onPressed: () {
+                    openScreen(context, Routes.carouselRoute);
+                  },
                   buttonColor: themeData(context).primaryColor,
                   titleColor: Colors.white,
                 )
