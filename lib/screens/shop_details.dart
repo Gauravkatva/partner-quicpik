@@ -43,7 +43,6 @@ class _ShopDetailsState extends State<ShopDetails> {
                     child: Container(
                       margin: EdgeInsets.only(left: 20),
                       child: Column(
-                        // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Container(
@@ -77,11 +76,6 @@ class _ShopDetailsState extends State<ShopDetails> {
                   textEditingController: shopNameController,
                   hintText: "Shop Name",
                   prefixIcon: Icon(Icons.shop),
-                ),
-                GenericTextField(
-                  textEditingController: categoryController,
-                  hintText: "Category",
-                  prefixIcon: Icon(Icons.category),
                 ),
                 GenericTextField(
                   textEditingController: shopNumberController,
