@@ -2,29 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:partner_quicpik/utils/app_utils.dart';
 import 'package:pinput/pin_put/pin_put.dart';
 
-class OTPVerification extends StatefulWidget {
-  const OTPVerification({Key? key}) : super(key: key);
+class OTPVerification extends StatelessWidget {
+  OTPVerification({this.focusNode, Key? key}) : super(key: key);
 
-  @override
-  _OTPVerificationState createState() => _OTPVerificationState();
-}
-
-class _OTPVerificationState extends State<OTPVerification> {
   final TextEditingController _otpTextEditingController =
       TextEditingController();
-  final FocusNode _focusNode = FocusNode();
-
+  final FocusNode? focusNode;
   BoxDecoration get _pinPutDecoration {
     return BoxDecoration(
       border: Border.all(color: Colors.white),
       borderRadius: BorderRadius.circular(15.0),
     );
-  }
-
-  @override
-  void initState() {
-    _focusNode.requestFocus();
-    super.initState();
   }
 
   @override
@@ -61,7 +49,7 @@ class _OTPVerificationState extends State<OTPVerification> {
               color: Colors.white,
               fontWeight: FontWeight.bold,
             ),
-        focusNode: _focusNode,
+        focusNode: focusNode,
       ),
     );
   }

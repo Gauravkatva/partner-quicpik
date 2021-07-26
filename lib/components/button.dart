@@ -19,7 +19,7 @@ class AppButton extends StatelessWidget {
     return Container(
       margin: EdgeInsets.symmetric(
         vertical: 10,
-        horizontal: 45,
+        horizontal: 30,
       ),
       child: Ink(
         height: 60,

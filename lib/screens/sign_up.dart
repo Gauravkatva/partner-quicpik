@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:partner_quicpik/components/app_clippers.dart';
 import 'package:partner_quicpik/components/button.dart';
 import 'package:partner_quicpik/components/phone_text_field.dart';
+import 'package:partner_quicpik/screens/verification.dart';
 import 'package:partner_quicpik/utils/app_utils.dart';
 import 'package:partner_quicpik/utils/routes.dart';
 
@@ -94,7 +95,12 @@ class SignUp extends StatelessWidget {
                   AppButton(
                       buttonTitle: "Sign Up",
                       onPressed: () {
-                        openScreen(context, Routes.verificationRoute);
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (context) =>
+                                Verification(fromSignup: true),
+                          ),
+                        );
                       },
                       buttonColor: themeData(context).primaryColor,
                       titleColor: Colors.white),
