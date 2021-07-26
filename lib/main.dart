@@ -1,11 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:partner_quicpik/screens/carosel_screens.dart';
-import 'package:partner_quicpik/screens/onboarding.dart';
-import 'package:partner_quicpik/screens/personal_details.dart';
-import 'package:partner_quicpik/screens/shop_details.dart';
-import 'package:partner_quicpik/screens/sign_in.dart';
-import 'package:partner_quicpik/screens/sign_up.dart';
-import 'package:partner_quicpik/screens/verification.dart';
+import 'package:partner_quicpik/screens/screens.dart';
 import 'package:partner_quicpik/utils/theme.dart';
 import 'package:partner_quicpik/utils/routes.dart';
 import 'package:partner_quicpik/utils/wrapper.dart';
