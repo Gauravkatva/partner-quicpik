@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:partner_quicpik/components/app_clippers.dart';
 import 'package:partner_quicpik/components/button.dart';
 import 'package:partner_quicpik/components/otp_field.dart';
@@ -71,7 +72,7 @@ class Verification extends StatelessWidget {
                 Positioned(
                   top: screenSize(context).height / 6,
                   left: screenSize(context).width - 230,
-                  child: Image.asset("assets/verify.png"),
+                  child: SvgPicture.asset("assets/verify.svg"),
                 ),
               ],
             ),

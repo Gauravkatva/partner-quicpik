@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:partner_quicpik/components/app_clippers.dart';
 import 'package:partner_quicpik/components/button.dart';
 import 'package:partner_quicpik/components/gender_selector.dart';
@@ -61,8 +62,8 @@ class PersonalDetails extends StatelessWidget {
                 Positioned(
                   top: screenSize(context).height / 9,
                   left: (screenSize(context).width / 2) - 100,
-                  child: Image.asset(
-                    "assets/personal_details.png",
+                  child: SvgPicture.asset(
+                    "assets/personal_details.svg",
                     height: screenSize(context).height / 3,
                   ),
                 ),

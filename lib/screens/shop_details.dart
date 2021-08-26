@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:partner_quicpik/components/app_clippers.dart';
 import 'package:partner_quicpik/components/button.dart';
 import 'package:partner_quicpik/components/generic_textfield.dart';
@@ -64,8 +65,8 @@ class _ShopDetailsState extends State<ShopDetails> {
                 Positioned(
                   top: screenSize(context).height / 13,
                   left: 0,
-                  child: Image.asset(
-                    "assets/shop_details.png",
+                  child: SvgPicture.asset(
+                    "assets/shop_details.svg",
                     height: screenSize(context).height / 4.5,
                   ),
                 ),

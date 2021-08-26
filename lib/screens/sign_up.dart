@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:partner_quicpik/components/app_clippers.dart';
 import 'package:partner_quicpik/components/button.dart';
 import 'package:partner_quicpik/components/phone_text_field.dart';
@@ -66,7 +67,7 @@ class SignUp extends StatelessWidget {
                 Positioned(
                   top: screenSize(context).height / 5.5,
                   left: 0,
-                  child: Image.asset("assets/sign_up.png"),
+                  child: SvgPicture.asset("assets/sign_up.svg"),
                 ),
               ],
             ),

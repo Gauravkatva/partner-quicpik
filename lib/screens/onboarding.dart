@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:partner_quicpik/components/button.dart';
 import 'package:partner_quicpik/models/user.dart';
@@ -79,7 +80,7 @@ class _OnboardingState extends State<Onboarding> {
               padding: const EdgeInsets.symmetric(
                 vertical: 40,
               ),
-              child: Image.asset("assets/onboarding.png"),
+              child: SvgPicture.asset("assets/onboarding.svg"),
             ),
             Padding(
               padding: const EdgeInsets.only(
