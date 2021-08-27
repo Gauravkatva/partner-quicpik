@@ -104,23 +104,24 @@ class _VerificationState extends State<Verification> {
                   ),
                   OTPVerification(
                     onFieldChanged: (value) {
-                        enteredOTP = value;
-                      
+                      print("$value from verification");
+                      enteredOTP = value;
+                      print("$enteredOTP from otp");
                     },
                     focusNode: focusNode,
                   ),
                   AppButton(
                       buttonTitle: "Verify",
                       onPressed: () async {
-                        print(enteredOTP);
-                        _appProvider.authMethods
-                            .createUserFromCredential(enteredOTP, context);
+                        print("$enteredOTP from verify button");
+                        // _appProvider.authMethods
+                        //     .createUserFromCredential(enteredOTP, context);
                         // showSnackBar(context, "OTP Verified");
-                        // if (fromSignup) {
-                        //   openScreen(context, Routes.personalDetailRoute);
-                        // } else {
-                        //   openScreen(context, Routes.carouselRoute);
-                        // }
+                        if (widget.fromSignup) {
+                          openScreen(context, Routes.personalDetailRoute);
+                        } else {
+                          openScreen(context, Routes.carouselRoute);
+                        }
                       },
                       buttonColor: Colors.white,
                       titleColor: themeData(context).primaryColor),

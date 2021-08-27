@@ -28,8 +28,8 @@ class OTPVerification extends StatelessWidget {
       ),
       child: PinPut(
         onChanged: (value) {
+          print("$value from pinput");
           onFieldChanged(value);
-          
         },
         controller: _otpTextEditingController,
         separator: SizedBox(

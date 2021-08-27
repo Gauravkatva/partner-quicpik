@@ -107,8 +107,8 @@ class _SignUpState extends State<SignUp> {
                   AppButton(
                       buttonTitle: "Sign Up",
                       onPressed: () async {
-                        await _appProvider.authMethods.verifyUserPhoneNumber(
-                            "+91" + phoneNumberController.text, context);
+                        // await _appProvider.authMethods.verifyUserPhoneNumber(
+                        //     "+91" + phoneNumberController.text, context);
                         Navigator.of(context).push(
                           MaterialPageRoute(
                             builder: (context) =>
