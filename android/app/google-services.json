@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "822119285424",
+    "project_id": "partner-quicpik",
+    "storage_bucket": "partner-quicpik.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:822119285424:android:ceca2c1e6ae4f51e58b175",
+        "android_client_info": {
+          "package_name": "com.example.partner_quicpik"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "822119285424-2143m80vd1959hj5t1tg0ar28vbpkqfg.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.partner_quicpik",
+            "certificate_hash": "2a5164a7ff3a91e4f1a6122ce28fd793e79490dd"
+          }
+        },
+        {
+          "client_id": "822119285424-vapf006tu078qf7dvt4ko8pe52ll6n0a.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC4-bgOV1Ot9RcA3Go7fK0fynxj99AZY1A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "822119285424-vapf006tu078qf7dvt4ko8pe52ll6n0a.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

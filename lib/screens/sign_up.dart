@@ -3,14 +3,26 @@ import 'package:partner_quicpik/components/app_clippers.dart';
 import 'package:partner_quicpik/components/button.dart';
 import 'package:partner_quicpik/components/phone_text_field.dart';
 import 'package:partner_quicpik/screens/verification.dart';
+import 'package:partner_quicpik/services/app_provider.dart';
+import 'package:partner_quicpik/services/auth.dart';
 import 'package:partner_quicpik/utils/app_utils.dart';
 import 'package:partner_quicpik/utils/routes.dart';
+import 'package:provider/provider.dart';
 
-class SignUp extends StatelessWidget {
+class SignUp extends StatefulWidget {
   SignUp({Key? key}) : super(key: key);
+
+  @override
+  _SignUpState createState() => _SignUpState();
+}
+
+class _SignUpState extends State<SignUp> {
+  
   final phoneNumberController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
+    final _appProvider = Provider.of<QuicPikProvider>(context, listen: false);
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
@@ -94,7 +106,9 @@ class SignUp extends StatelessWidget {
                   ),
                   AppButton(
                       buttonTitle: "Sign Up",
-                      onPressed: () {
+                      onPressed: () async {
+                        await _appProvider.authMethods.verifyUserPhoneNumber(
+                            "+91" + phoneNumberController.text, context);
                         Navigator.of(context).push(
                           MaterialPageRoute(
                             builder: (context) =>

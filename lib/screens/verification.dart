@@ -2,15 +2,28 @@ import 'package:flutter/material.dart';
 import 'package:partner_quicpik/components/app_clippers.dart';
 import 'package:partner_quicpik/components/button.dart';
 import 'package:partner_quicpik/components/otp_field.dart';
+import 'package:partner_quicpik/services/app_provider.dart';
+import 'package:partner_quicpik/services/auth.dart';
 import 'package:partner_quicpik/utils/app_utils.dart';
 import 'package:partner_quicpik/utils/routes.dart';
+import 'package:provider/provider.dart';
 
-class Verification extends StatelessWidget {
+class Verification extends StatefulWidget {
   Verification({this.fromSignup = false, Key? key}) : super(key: key);
   final bool fromSignup;
+
+  @override
+  _VerificationState createState() => _VerificationState();
+}
+
+class _VerificationState extends State<Verification> {
   final FocusNode focusNode = FocusNode();
+
   @override
   Widget build(BuildContext context) {
+    final _appProvider = Provider.of<QuicPikProvider>(context, listen: false);
+
+    String enteredOTP = "";
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
@@ -83,24 +96,31 @@ class Verification extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Text(
-                    "Sign In with OTP",
+                    "Sign Up with OTP",
                     style: themeData(context).textTheme.headline6!.copyWith(
                           color: Colors.white,
                           fontWeight: FontWeight.bold,
                         ),
                   ),
                   OTPVerification(
+                    onFieldChanged: (value) {
+                        enteredOTP = value;
+                      
+                    },
                     focusNode: focusNode,
                   ),
                   AppButton(
                       buttonTitle: "Verify",
                       onPressed: () async {
-                        showSnackBar(context, "OTP Verified");
-                        if (fromSignup) {
-                          openScreen(context, Routes.personalDetailRoute);
-                        } else {
-                          openScreen(context, Routes.carouselRoute);
-                        }
+                        print(enteredOTP);
+                        _appProvider.authMethods
+                            .createUserFromCredential(enteredOTP, context);
+                        // showSnackBar(context, "OTP Verified");
+                        // if (fromSignup) {
+                        //   openScreen(context, Routes.personalDetailRoute);
+                        // } else {
+                        //   openScreen(context, Routes.carouselRoute);
+                        // }
                       },
                       buttonColor: Colors.white,
                       titleColor: themeData(context).primaryColor),
