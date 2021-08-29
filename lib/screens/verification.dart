@@ -6,6 +6,7 @@ import 'package:partner_quicpik/services/app_provider.dart';
 import 'package:partner_quicpik/services/auth.dart';
 import 'package:partner_quicpik/utils/app_utils.dart';
 import 'package:partner_quicpik/utils/routes.dart';
+import 'package:pinput/pin_put/pin_put.dart';
 import 'package:provider/provider.dart';
 
 class Verification extends StatefulWidget {
@@ -18,12 +19,17 @@ class Verification extends StatefulWidget {
 
 class _VerificationState extends State<Verification> {
   final FocusNode focusNode = FocusNode();
+  final TextEditingController _pinController = TextEditingController();
+  BoxDecoration get _pinPutDecoration {
+    return BoxDecoration(
+      border: Border.all(color: Colors.white),
+      borderRadius: BorderRadius.circular(15.0),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
     final _appProvider = Provider.of<QuicPikProvider>(context, listen: false);
-
-    String enteredOTP = "";
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
@@ -102,21 +108,49 @@ class _VerificationState extends State<Verification> {
                           fontWeight: FontWeight.bold,
                         ),
                   ),
-                  OTPVerification(
-                    onFieldChanged: (value) {
-                      print("$value from verification");
-                      enteredOTP = value;
-                      print("$enteredOTP from otp");
-                    },
-                    focusNode: focusNode,
+                  Container(
+                    margin: EdgeInsets.symmetric(
+                      vertical: 15,
+                      horizontal: 40,
+                    ),
+                    child: PinPut(
+                      controller: _pinController,
+                      separator: SizedBox(
+                        width: 6,
+                      ),
+                      preFilledWidget: Center(
+                        child: Text(
+                          "-",
+                          style: TextStyle(
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
+                      fieldsCount: 6,
+                      selectedFieldDecoration: _pinPutDecoration.copyWith(
+                        color: Colors.white,
+                      ),
+                      submittedFieldDecoration: _pinPutDecoration.copyWith(
+                        borderRadius: BorderRadius.circular(
+                          30,
+                        ),
+                      ),
+                      followingFieldDecoration: _pinPutDecoration,
+                      textStyle:
+                          themeData(context).textTheme.bodyText1!.copyWith(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                              ),
+                      focusNode: focusNode,
+                    ),
                   ),
                   AppButton(
                       buttonTitle: "Verify",
                       onPressed: () async {
-                        print("$enteredOTP from verify button");
-                        // _appProvider.authMethods
-                        //     .createUserFromCredential(enteredOTP, context);
-                        // showSnackBar(context, "OTP Verified");
+                        print(_pinController.text);
+                        _appProvider.authMethods.createUserFromCredential(
+                            _pinController.text, context);
+                        showSnackBar(context, "OTP Verified");
                         if (widget.fromSignup) {
                           openScreen(context, Routes.personalDetailRoute);
                         } else {

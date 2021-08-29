@@ -7,10 +7,11 @@ class OTPVerification extends StatelessWidget {
     this.focusNode,
     Key? key,
     required this.onFieldChanged,
+    required this.pinController,
   }) : super(key: key);
-  final Function(String) onFieldChanged;
-  final TextEditingController _otpTextEditingController =
-      TextEditingController();
+  final TextEditingController pinController;
+  final void Function(String?) onFieldChanged;
+
   final FocusNode? focusNode;
   BoxDecoration get _pinPutDecoration {
     return BoxDecoration(
@@ -28,10 +29,9 @@ class OTPVerification extends StatelessWidget {
       ),
       child: PinPut(
         onChanged: (value) {
-          print("$value from pinput");
           onFieldChanged(value);
         },
-        controller: _otpTextEditingController,
+        controller: pinController,
         separator: SizedBox(
           width: 6,
         ),
