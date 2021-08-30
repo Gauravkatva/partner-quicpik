@@ -1,11 +1,13 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:partner_quicpik/api/register_api.dart';
 import 'package:partner_quicpik/components/app_clippers.dart';
 import 'package:partner_quicpik/components/button.dart';
 import 'package:partner_quicpik/components/gender_selector.dart';
 import 'package:partner_quicpik/components/generic_textfield.dart';
 import 'package:partner_quicpik/utils/app_utils.dart';
-import 'package:partner_quicpik/utils/routes.dart';
 
 class PersonalDetails extends StatelessWidget {
   PersonalDetails({Key? key}) : super(key: key);
@@ -109,8 +111,26 @@ class PersonalDetails extends StatelessWidget {
                   ),
                   AppButton(
                     buttonTitle: "Next",
-                    onPressed: () {
-                      openScreen(context, Routes.shopDetailRoute);
+                    onPressed: () async {
+                      if (fullNameController.text.isEmpty ||
+                          emailController.text.isEmpty ||
+                          ageController.text.isEmpty ||
+                          genderContoller.isEmpty) {
+                        showSnackBar(context, "All Fields are mandetory");
+                      } else {
+                        final userData = await registerUser(
+                          name: fullNameController.text,
+                          email: emailController.text,
+                          age: ageController.text,
+                          gender: genderContoller.toLowerCase(),
+                          phoneNumber: "${Random().nextInt(900000) + 100000}",
+                        );
+                        if (userData.statusCode == 200) {
+                          print(userData.userData!.id);
+                        } else {
+                          print(userData.message);
+                        }
+                      }
                     },
                     buttonColor: Colors.white,
                     titleColor: themeData(context).primaryColor,

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 bool isDebugging = true;
-
+String baseUrl = "https://quick-pick-app.herokuapp.com/api";
 void printDebug(value) {
   if (isDebugging) {
     print(value);

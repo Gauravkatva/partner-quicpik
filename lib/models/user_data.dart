@@ -9,13 +9,13 @@ class UserData {
     this.status,
     this.statusCode,
     this.message,
-    this.users,
+    this.userData,
   });
 
   bool? status;
   int? statusCode;
   String? message;
-  List<User>? users;
+  User? userData;
 
   factory UserData.fromJson(json) => _$UserDataFromJson(json);
   toJson() => _$UserDataToJson(this);
