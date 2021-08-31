@@ -28,9 +28,12 @@ void openScreen(BuildContext context, String route,
 void showSnackBar(BuildContext context, String content) {
   ScaffoldMessenger.of(context).showSnackBar(
     SnackBar(
+      duration: Duration(
+        milliseconds: 850,
+      ),
       content: Text(
         content,
-        style: themeData(context).textTheme.button!.copyWith(
+        style: themeData(context).textTheme.subtitle1!.copyWith(
               color: Colors.white,
             ),
       ),

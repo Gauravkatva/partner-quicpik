@@ -3,12 +3,20 @@ import 'package:flutter/material.dart';
 import 'package:partner_quicpik/services/app_provider.dart';
 import 'package:provider/provider.dart';
 
+enum SignUpError {
+  invalidCode,
+  errorOccured,
+  unKnownError,
+  userSignedUp,
+  invalidPhoneNumber,
+  tooManyRequest,
+  numberVerified,
+}
+
 class AuthMethods {
   FirebaseAuth _auth = FirebaseAuth.instance;
-  //late String _verificationId;
-
   //phone auth functions
-
+//invalid-phone-number
   PhoneVerificationCompleted _phoneVerificationCompleted =
       (PhoneAuthCredential credential) async {};
 
@@ -18,10 +26,10 @@ class AuthMethods {
         'Phone number verification failed. Code: ${authException.code}. Message: ${authException.message}');
   };
 
-  PhoneCodeSent _phoneCodeSent =
-      (String verificationID, int? resendToken) async {
-    print("Code Sent Successfully");
-  };
+  // PhoneCodeSent _phoneCodeSent =
+  //     (String verificationID, int? resendToken) async {
+  //   print("Code Sent Successfully");
+  // };
 
   PhoneCodeAutoRetrievalTimeout _phoneCodeAutoRetrievalTimeout =
       (String verificationID) async {};
@@ -29,33 +37,38 @@ class AuthMethods {
   Future<void> verifyUserPhoneNumber(
       String phoneNumber, BuildContext context) async {
     final _appProvider = Provider.of<QuicPikProvider>(context, listen: false);
-
     return _auth.verifyPhoneNumber(
       phoneNumber: phoneNumber,
       verificationCompleted: _phoneVerificationCompleted,
       verificationFailed: _phoneVerificationFailed,
       codeSent: (String verificationID, int? resendToken) async {
-        print("Code Sent Successfully");
-        print(verificationID);
         _appProvider.updateVerificationID(verificationID);
       },
       codeAutoRetrievalTimeout: _phoneCodeAutoRetrievalTimeout,
     );
+
+    
   }
 
-  void createUserFromCredential(String smsCode, BuildContext context) async {
-    print("$smsCode from create user");
+  Future<SignUpError> createUserFromCredential(
+      String smsCode, BuildContext context) async {
     final _appProvider = Provider.of<QuicPikProvider>(context, listen: false);
-    print("${_appProvider.verificationID} from create user");
     PhoneAuthCredential _phoneAuthCredential = PhoneAuthProvider.credential(
         verificationId: _appProvider.verificationID, smsCode: smsCode);
     try {
-      final userCredential =
+      UserCredential userCredential =
           await _auth.signInWithCredential(_phoneAuthCredential);
-      print(userCredential.credential);
+      print("${userCredential.credential} usr credential.......");
+      return SignUpError.userSignedUp;
     } on FirebaseAuthException catch (e) {
-      print("error occured at createUser");
-      print(e.message);
+      if (e.code == "invalid-verification-code") {
+        return SignUpError.invalidCode;
+      } else if (e.code == "invalid-verification-id" ||
+          e.code == "invalid-credential") {
+        return SignUpError.errorOccured;
+      } else {
+        return SignUpError.unKnownError;
+      }
     }
   }
 }

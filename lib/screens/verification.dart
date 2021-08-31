@@ -147,14 +147,25 @@ class _VerificationState extends State<Verification> {
                   AppButton(
                       buttonTitle: "Verify",
                       onPressed: () async {
-                        print(_pinController.text);
-                        _appProvider.authMethods.createUserFromCredential(
-                            _pinController.text, context);
-                        showSnackBar(context, "OTP Verified");
-                        if (widget.fromSignup) {
-                          openScreen(context, Routes.personalDetailRoute);
+                        SignUpError _signUpError = await _appProvider
+                            .authMethods
+                            .createUserFromCredential(
+                                _pinController.text, context);
+                        if (_signUpError == SignUpError.userSignedUp) {
+                          showSnackBar(context, "OTP Verified");
+                          await Future.delayed(Duration(seconds: 1));
+                          if (widget.fromSignup) {
+                            openScreen(context, Routes.personalDetailRoute);
+                          } else {
+                            openScreen(context, Routes.carouselRoute);
+                          }
+                        } else if (_signUpError == SignUpError.invalidCode) {
+                          showSnackBar(context, "Invalid Code");
+                        } else if (_signUpError == SignUpError.errorOccured) {
+                          showSnackBar(context,
+                              "Oops! An error occured. Please try again");
                         } else {
-                          openScreen(context, Routes.carouselRoute);
+                          showSnackBar(context, "Oops! Something went wrong");
                         }
                       },
                       buttonColor: Colors.white,
