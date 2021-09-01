@@ -57,7 +57,7 @@ class _OnboardingState extends State<Onboarding> {
             ),
             AppButton(
               buttonTitle: "Sign In",
-              onPressed: () {
+              onPressed: () async {
                 openScreen(context, Routes.signinRoute);
               },
               buttonColor: Colors.white,
@@ -65,7 +65,7 @@ class _OnboardingState extends State<Onboarding> {
             ),
             AppButton(
               buttonTitle: "Sign Up",
-              onPressed: () {
+              onPressed: () async {
                 openScreen(context, Routes.signupRoute);
               },
               buttonColor: Colors.white,

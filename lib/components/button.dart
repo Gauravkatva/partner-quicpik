@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:partner_quicpik/utils/app_utils.dart';
 
-class AppButton extends StatelessWidget {
+enum ButtonState { child, loading }
+
+class AppButton extends StatefulWidget {
   final String buttonTitle;
-  final void Function() onPressed;
+  final Future<void> Function() onPressed;
   final Color buttonColor;
   final Color titleColor;
   const AppButton(
@@ -13,6 +15,13 @@ class AppButton extends StatelessWidget {
       required this.buttonColor,
       required this.titleColor})
       : super(key: key);
+
+  @override
+  _AppButtonState createState() => _AppButtonState();
+}
+
+class _AppButtonState extends State<AppButton> {
+  ButtonState _state = ButtonState.child;
 
   @override
   Widget build(BuildContext context) {
@@ -25,23 +34,51 @@ class AppButton extends StatelessWidget {
         height: 60,
         width: double.infinity,
         decoration: BoxDecoration(
-          color: buttonColor,
+          color: widget.buttonColor,
           borderRadius: BorderRadius.circular(10),
         ),
         child: InkWell(
           borderRadius: BorderRadius.circular(10),
           splashColor: Colors.grey,
-          onTap: onPressed,
+          onTap: _state == ButtonState.child
+              ? () async {
+                  setState(() {
+                    _state = ButtonState.loading;
+                  });
+                  await widget.onPressed();
+                  setState(() {
+                    _state = ButtonState.child;
+                  });
+                }
+              : null,
           child: Center(
-            child: Text(
-              buttonTitle,
-              style: themeData(context).textTheme.button!.copyWith(
-                    color: titleColor,
-                  ),
-            ),
+            child: _buildForState(_state, context),
           ),
         ),
       ),
     );
+  }
+
+  Widget _buildForState(ButtonState state, BuildContext context) {
+    switch (state) {
+      case ButtonState.child:
+        return Text(
+          widget.buttonTitle,
+          style: themeData(context).textTheme.button!.copyWith(
+                color: widget.titleColor,
+              ),
+        );
+      case ButtonState.loading:
+        return CircularProgressIndicator(
+          strokeWidth: 5,
+        );
+      default:
+        return Text(
+          widget.buttonTitle,
+          style: themeData(context).textTheme.button!.copyWith(
+                color: widget.titleColor,
+              ),
+        );
+    }
   }
 }

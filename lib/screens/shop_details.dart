@@ -106,7 +106,7 @@ class _ShopDetailsState extends State<ShopDetails> {
                 ),
                 AppButton(
                   buttonTitle: "Finish",
-                  onPressed: () {
+                  onPressed: () async {
                     openScreen(context, Routes.carouselRoute);
                   },
                   buttonColor: themeData(context).primaryColor,

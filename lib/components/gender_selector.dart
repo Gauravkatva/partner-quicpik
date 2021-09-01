@@ -32,16 +32,11 @@ class _GenderSelectorState extends State<GenderSelector> {
           ),
           Row(
             children: List.generate(_list.length, (index) {
-              return InkWell(
-                onTap: () {
-                  setState(() {
-                    _pointer = index;
-                  });
-                  widget.onChanged(_list[index]);
-                },
-                child: Container(
-                  margin: EdgeInsets.only(right: 10),
-                  padding: EdgeInsets.symmetric(vertical: 12, horizontal: 20),
+              return Container(
+                margin: EdgeInsets.only(right: 10),
+                child: Ink(
+                  height: 50,
+                  width: 100,
                   decoration: BoxDecoration(
                     color: index == _pointer
                         ? Colors.white
@@ -52,14 +47,24 @@ class _GenderSelectorState extends State<GenderSelector> {
                       width: 2,
                     ),
                   ),
-                  child: Text(
-                    "${_list[index]}",
-                    style: themeData(context).textTheme.bodyText1!.copyWith(
-                          color: index == _pointer
-                              ? themeData(context).primaryColor
-                              : Colors.white,
-                          fontWeight: FontWeight.bold,
-                        ),
+                  child: InkWell(
+                    onTap: () {
+                      setState(() {
+                        _pointer = index;
+                      });
+                      widget.onChanged(_list[index]);
+                    },
+                    child: Center(
+                      child: Text(
+                        "${_list[index]}",
+                        style: themeData(context).textTheme.bodyText1!.copyWith(
+                              color: index == _pointer
+                                  ? themeData(context).primaryColor
+                                  : Colors.white,
+                              fontWeight: FontWeight.bold,
+                            ),
+                      ),
+                    ),
                   ),
                 ),
               );

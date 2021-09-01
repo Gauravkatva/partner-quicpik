@@ -95,7 +95,7 @@ class SignIn extends StatelessWidget {
                   ),
                   AppButton(
                       buttonTitle: "Sign In",
-                      onPressed: () {
+                      onPressed: () async {
                         openScreen(context, Routes.verificationRoute);
                       },
                       buttonColor: Colors.white,

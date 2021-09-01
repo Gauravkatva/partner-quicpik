@@ -95,7 +95,7 @@ class SignUp extends StatelessWidget {
                   ),
                   AppButton(
                       buttonTitle: "Sign Up",
-                      onPressed: () {
+                      onPressed: () async {
                         Navigator.of(context).push(
                           MaterialPageRoute(
                             builder: (context) =>
